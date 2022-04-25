@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './ExpenseForm.css';
-const ExpenseForm = () => {
+const ExpenseForm = (props) => {
     const [enteredTitle, setEnteredTitle] = useState('');
     const [enteredAmount, setEnteredAmount] = useState('');
     const [enteredDate, setEnteredDate] = useState('');
@@ -22,7 +22,11 @@ const ExpenseForm = () => {
             amount: enteredAmount,
             date: new Date(enteredDate)
         };
-        console.log(expenseData);
+        //console.log(expenseData);
+        
+        //Sending data from child component to parent component.
+        props.onSaveExpenseData(expenseData);
+
         //After form submission reset input boxes to empty.
         setEnteredTitle('');
         setEnteredAmount('');
